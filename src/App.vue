@@ -1,47 +1,24 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <div>
+    <DataTable :items="items" :columns="tableColumns"/>
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
+<script setup lang="ts">
+import {ref} from "vue";
+import DataTable from "@/components/data-table.vue";
+import {FieldGenerator} from "@/utils/field-generator";
+import {ObjectGenerator} from "@/utils/object-generator";
+import type {Item} from "@/types";
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
+const fieldGenerator = new FieldGenerator();
+const objectGenerator = new ObjectGenerator(fieldGenerator, 1000);
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+const items = ref<Item[]>([]);
+const tableColumns = ref<string[]>([]);
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
+items.value = objectGenerator.generateObjectsArray();
+const sampleObject = items.value[0];
+tableColumns.value = Object.keys(sampleObject);
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
+</script>

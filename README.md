@@ -1,25 +1,20 @@
 # array-generate-sort-app
+Сделать на VIte + Vue новую аппку, где нужно будет отобразить на странице поле ввода "поиск", плюс таблицу с данными.
 
-This template should help get you started developing with Vue 3 in Vite.
+Нужно сделать чтобы для каждого заголовка колонки таблицы можно было в селекте выбрать как сортировать по этому полю, например Без Сортировки / Сортировать по убыванию / Сортировать по возрастанию. 
 
-## Recommended IDE Setup
+Так же для каждой колонки сделать чекбокс "участвует в поиске". 
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+При вводе текста в поле поиска отобразить в таблице только то что найдено в отмеченных колонках плюс подсветить маркером в самом тексте где происходит сопоставление. 
 
-## Type Support for `.vue` Imports in TS
+Если в поле поиска текста нет, то просто отобразить все данные.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+Для этого нужно сгенерировать массив объектов размерностью, которую укажем.
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+Названия полей объектов будут произвольно сгенерированы из 1 - 3 слов, например "field_name_test", где каждое слово будет от 2х до 10 символов.
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+Всего полей в объекте будет от 3 до 5, типы этих полей могут быть как числовыми (целое число от -1000 до 1000) так и текстовыми (слова из русских букв от 2х до 10 символов, от 1 слова до 10)
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
 
 ## Project Setup
 
