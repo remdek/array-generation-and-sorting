@@ -1,0 +1,1 @@
+export {default as TableWithSortingAndFiltering} from './table-with-sorting-and-filtering.vue'

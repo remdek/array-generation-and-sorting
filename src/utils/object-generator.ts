@@ -15,22 +15,12 @@ export class ObjectGenerator {
     }
 
     private generateObject(): Item {
-        const object: Item = {};
-
-        for (const { name, type } of this.fieldNamesAndTypes) {
-            if (type === "number") {
-                object[name] = getRandomNumber(-1000, 1000);
-            } else {
-                const numberOfWords: number = getRandomNumber(1, 10)
-                const words: string[] = new Array(numberOfWords)
-                    .fill(undefined)
-                    .map(() => generateRandomWord());
-
-                object[name] = words.join(" ");
-            }
-        }
-
-        return object;
+        return this.fieldNamesAndTypes.reduce((object: Item, { name, type }) => {
+            object[name] = type === "number" 
+                ? getRandomNumber(-1000, 1000) 
+                : Array.from({ length: getRandomNumber(1, 10) }, generateRandomWord).join(" ");
+            return object;
+        }, {});
     }
     public generateObjectsArray(): Item[] {
         return Array.from({ length: this.numberOfObjects }, () => this.generateObject());

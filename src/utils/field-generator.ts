@@ -1,12 +1,10 @@
-import { generateRandomWord } from "@/utils/generate-random-word";
 import { getRandomNumber } from "@/utils/get-random-number";
+import { generateRandomWord } from "@/utils/generate-random-word";
+
 
 export class FieldGenerator {
     private generateFieldName(): string {
-        const numberOfWords: number = getRandomNumber(1, 3) // случайное число от 1 до 3х
-        const fieldWords: string[] = Array.from({ length: numberOfWords }, () => generateRandomWord());
-
-        return fieldWords.join("_");
+        return Array.from({ length: getRandomNumber(1, 3) }, generateRandomWord).join("_");
     }
 
     private generateFieldType(): "number" | "string" {
@@ -14,9 +12,7 @@ export class FieldGenerator {
     }
 
     public generateFieldsAndTypes(): { name: string; type: "number" | "string" }[] {
-        const numberOfFields: number = getRandomNumber(3, 5) // случайное число от 3х до 5
-
-        return Array.from({ length: numberOfFields }, () => ({
+        return Array.from({ length: getRandomNumber(3, 5) }, () => ({
             name: this.generateFieldName(),
             type: this.generateFieldType(),
         }));

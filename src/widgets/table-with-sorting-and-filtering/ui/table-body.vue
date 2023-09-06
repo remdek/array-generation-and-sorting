@@ -13,9 +13,9 @@
   </tbody>
 </template>
 
-
 <script setup lang="ts">
-const {filteredItems, columns, searchText, searchableColumns} = defineProps(['filteredItems', 'columns', 'searchText', 'searchableColumns'])
+defineProps(['filteredItems', 'columns', 'searchText', 'searchableColumns'])
+
 const highlightMatches = (text: string | number, query: string): string => {
   if (!query) return String(text);
   const regex = new RegExp(`(${query})`, 'gi');
